@@ -1,0 +1,75 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "projects": {
+    "angular-split-app": {
+      "root": "",
+      "sourceRoot": "src_app",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/angular-split-app",
+            "index": "src_app/index.html",
+            "main": "src_app/main.ts",
+            "polyfills": "src_app/polyfills.ts",
+            "tsConfig": "src_app/tsconfig.app.json",
+            "assets": [
+              "src_app/favicon.ico"
+            ],
+            "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src_app/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src_app/environments/environment.ts",
+                  "with": "src_app/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "angular-split-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "angular-split-app:build:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "angular-split-app"
+}
