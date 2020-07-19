@@ -30,7 +30,7 @@
     "angular-split": "^3.0.3",
     "bootstrap": "4.3.1",
     "core-js": "2.6.5",
-    "lodash": "4.17.11",
+    "lodash": "4.17.19",
     "marked": "0.6.1",
     "ngx-bootstrap": "3.2.0",
     "rxjs": "6.5.2",
